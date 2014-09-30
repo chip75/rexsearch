@@ -333,13 +333,13 @@ function a587_handle_extensionpoint($_params)
       }
     break;
     
+    case 'SLICE_ADDED':
     case 'SLICE_UPDATED':
-      $rexsearch->indexArticle($_params['article_id'],$_params['clang']);
-    break;
-    
-    case 'SLICE_SHOW':
-      if(strpos($_params['subject'],'<div class="rex-message"><div class="rex-info">') AND (!empty($_params['function']) OR (!empty($_REQUEST['slice_id']) AND $_REQUEST['slice_id'] == $_params['slice_id'])))
-        $rexsearch->indexArticle($_params['article_id'],$_params['clang']); 
+    case 'SLICE_DELETED':
+
+      if(($_params['extension_point'] == 'SLICE_UPDATED' || $_params['extension_point'] == 'SLICE_ADDED' || $_params['extension_point'] == 'SLICE_DELETED') AND (!empty($_params['function']) OR (empty($_REQUEST['function']) AND @$_REQUEST['slice_id'] == @$_params['slice_id']))) {
+        $rexsearch->indexArticle($_params['article_id'],$_params['clang']);
+      }
     break;
   }
   
