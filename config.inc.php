@@ -92,7 +92,9 @@ if($REX['REDAXO'] AND $REX['ADDON']['settings'][$mypage]['automaticindex'] == '1
     'CAT_UPDATED',
     'MEDIA_ADDED',
     'MEDIA_UPDATED',
-    'SLICE_UPDATED'
+    'SLICE_ADDED',
+    'SLICE_UPDATED',
+    'SLICE_DELETED'
   );
   
   a587_register_extensionpoints($extensionPoints);
